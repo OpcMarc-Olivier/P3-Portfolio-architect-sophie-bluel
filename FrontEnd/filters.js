@@ -89,6 +89,7 @@ export async function filterAppartements () {
     console.log(filtreAppartements);
 
     filtreAppartements.addEventListener("click",()=> {
+        console.log("J'ai cliqué sur le filtre Appartement");
         const worksAppartementsFilter = works.filter (function(a) {
             return a.categoryId === 2
         })
