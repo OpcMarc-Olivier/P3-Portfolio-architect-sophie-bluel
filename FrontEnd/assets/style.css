@@ -37,6 +37,7 @@ ol, ul {
 	list-style: none;
 }
 a{
+	color: #000;
 	text-decoration: none;}
 
 blockquote, q {
@@ -177,14 +178,7 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
-.btn-modifier {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 8px;
-	color: black;
 
-}
 
 .filtres {
 	display: flex;
@@ -311,5 +305,157 @@ footer nav ul li{
 	font-style: normal;
 	font-weight: 300;
 	line-height: normal;
+}
+
+/* MODAL */
+
+.btn-modifier{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	color: black;
+
+}
+
+#modal-body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	animation: fadeIn 300ms both, slideFromTop 400ms both
+}
+
+.modal-wrapper {
+	
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	max-width: 600px;
+	max-height: 640px;
+	min-width: 600px;
+	min-height: 600px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 30px;
+	animation: slideFromTop 400ms both 100ms
+}
+
+.modal-wrapper2 {
+	
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	max-width: 600px;
+	max-height: 640px;
+	min-width: 600px;
+	min-height: 600px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 30px;
+	animation: fadeIn 300ms both
+	
+}
+
+
+
+.modal-wrapper2 form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-wrapper2 input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.exit-modal{
+	display: flex;
+	justify-content: space-between;
+	height: 20px;
+}
+
+.modal-wrapper h2, .modal-wrapper2 h2{
+	color: #000;
+	text-align: center;
+	font-family: "Work Sans";
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.gallery-modal{
+	margin: auto;
+	overflow: auto;
+	width: 75%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 10px;
+	grid-row-gap: 20px;
+	
+}
+
+.gallery-modal figure{
+	position: relative;
+}
+
+.gallery-modal img {
+	width: 100%;
+	object-fit: cover;
+}
+
+#trash-icon{
+	
+	padding: 3px 4px;
+	border-radius: 2px;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	background-color: #000;
+}
+
+.fa-trash-can{
+	color: white;
+}
+
+.gallery-border {
+	margin: auto;
+	width: 75%;
+	border-top: 1px solid #B3B3B3;
+}
+#btn-add-modal,#btn-done-modal {
+	height: 50px;
+	width: 297px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#btn-done-modal {
+	background-color: #A7A7A7;
+}
+
+#btn-add-modal:hover{
+	background-color: #000;
+}
+
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to{opacity: 1;}
+}
+
+@keyframes slideFromTop {
+	from{ transform: translateY(-50px) }
+	to{ transform: translateY(0);}
 }
 

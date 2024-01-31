@@ -12,10 +12,15 @@
         logOut.innerHTML = "logout"
 
         const divModifier = document.createElement ("div")
-        divModifier.innerHTML =`<span><i class="fa-regular fa-pen-to-square"></i></span><p>Modifier</p>`
+        divModifier.classList.add("btn-modifier")
+        divModifier.innerHTML =`<i class="fa-regular fa-pen-to-square"></i><a>Modifier</a>`
         const btnModifier = document.querySelector("#portfolio h2")
         btnModifier.appendChild(divModifier)
-        divModifier.classList.add("btn-modifier")
+        const modalLink = document.querySelector("#portfolio h2 a")
+        console.log(modalLink);
+        modalLink.classList.add("js-modal")
+        modalLink.setAttribute("href","#modal-body")
+       
 
 
         const filtres = document.querySelector(".filtres")

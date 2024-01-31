@@ -1,6 +1,8 @@
 import {getWorks} from "./works.js";
 import { filtreTous,filterObjets, filterAppartements, filterHotelEtRestaurants } from "./filters.js";
 import { editionMode } from "./editionMode.js";
+import { modal } from "./modal.js";
+import { appJs } from "./app.js";
 
 
 
@@ -34,6 +36,8 @@ galleryGrid.innerHTML= ""
 //Creation des balises via l'API
 getWorks()
 editionMode()
+// modal()
+appJs()
 }
 
 

@@ -115,5 +115,31 @@
 		</ul>
 	</nav>
 </footer>
+<aside id="modal-body" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titleModal" style="display: none;">
+	<div class="modal-wrapper js-modal-stop">
+		<div class="exit-modal"><i class="fa-solid fa-xl fa-xmark"></i></div>
+        <h2  id="titleModal" class="title-modal">Galerie photo</h2>
+        <div class="gallery-modal"></div>
+        <div class="gallery-border"></div>
+        <input type="submit" value="Ajouter une photo" id="btn-add-modal">
+	</div>
+	<div class="modal-wrapper2" >
+		<div class="exit-modal"><i class="fa-solid fa-xl fa-arrow-left"></i><i class="fa-solid fa-xl fa-xmark"></i></div>
+		<h2>Ajout photo</h2>
+		<div class="photo-wrapper">
+			<label for="fileInput">+ Ajouter photo</label>
+			<input type="file"  id="fileInput">
+		</div>
+		<form action="#" method="post">
+			<label for="name">Titre</label>
+			<input type="text" name="name" id="name">
+			<label for="name">Categorie</label>
+			<input type="text" name="name" id="name">
+			
+			<input type="submit" value="Valider" id="btn-done-modal">
+		</form>
+
+	</div>
+</aside>
 </body>
 </html>
