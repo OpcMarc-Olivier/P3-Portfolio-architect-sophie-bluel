@@ -20,6 +20,7 @@
         console.log(modalLink);
         modalLink.classList.add("js-modal")
         modalLink.setAttribute("href","#modal-body")
+        modalLink.setAttribute("id","modal-link" )
        
 
 

@@ -318,7 +318,7 @@ footer nav ul li{
 
 }
 
-#modal-body{
+#modal-body,#modal-body2{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -331,7 +331,7 @@ footer nav ul li{
 	animation: fadeIn 300ms both, slideFromTop 400ms both
 }
 
-.modal-wrapper {
+.modal-wrapper, .modal-wrapper2 {
 	
 	display: flex;
 	flex-direction: column;
@@ -358,27 +358,49 @@ footer nav ul li{
 	background-color: white;
 	border-radius: 10px;
 	padding: 30px;
-	animation: fadeIn 300ms both
+	animation: fadeIn 400ms both
 	
 }
 
 
 
 .modal-wrapper2 form {
+	margin: auto;
 	text-align: left;
-	margin-top:30px;
+	width: 75%;
 	display: flex;
 	flex-direction: column;
 }
 
-.modal-wrapper2 input {
+.modal-wrapper2 input, .modal-wrapper2 select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-bottom: 20px;
 }
 
+.modal-wrapper2 select {
+	padding-right: 10px;
+}
+
+.modal-wrapper2 select:focus {
+background-color: white;
+}
+
+.modal-wrapper2 form label {
+	margin-bottom:1.1em ;
+}
+
+
+
 .exit-modal{
+	display: flex;
+	justify-content: flex-end;
+	height: 20px;
+}
+
+.exit-modal2 {
 	display: flex;
 	justify-content: space-between;
 	height: 20px;
@@ -392,6 +414,43 @@ footer nav ul li{
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+
+
+.photo-wrapper {
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	background-color: #E8F1F6;
+	border-radius: 10px;
+	width: 65%;
+	margin: auto;
+}
+.photo-wrapper img {
+	width: 50%;
+	margin: auto;
+}
+
+.photo-wrapper label {
+	padding: 10px 40px;
+	color: #306685;
+	text-align: center;
+	font-family: "Work Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	border-radius: 50px;
+	background-color: #CBD6DC;
+	
+}
+#fileInput{
+	/* display: none; */
+ }
+.fa-image{
+	color: #B9C5CC;
 }
 
 .gallery-modal{
