@@ -10,7 +10,7 @@ export async function getWorks () {
     window.localStorage.setItem("works",worksValue)
     const getWorks = window.localStorage.getItem("works")
     const getWorksLocalStorage = JSON.parse(getWorks)
-    console.log(getWorksLocalStorage[0]);
+    console.log(getWorksLocalStorage[0].id);
     
     const galleryGrid = document.querySelector(".gallery")
 

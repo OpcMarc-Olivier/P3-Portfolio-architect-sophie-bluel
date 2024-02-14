@@ -129,20 +129,22 @@
 		<div class="exit-modal2"><i id= "previous-page-arrow" class="fa-solid fa-xl fa-arrow-left"></i><i id="exit-cross-modal2" class="fa-solid fa-xl fa-xmark"></i></div>
 		<h2>Ajout photo</h2>
 		<div class="photo-wrapper">
-			<i class="fa-regular fa-image fa-6x" ></i>
-			<label for="fileInput">+ Ajouter photo</label>
-			<input type="file"  id="fileInput">
-			<p>jpeg,png: 4mo max</p>
+			<div class="photo-wrapper-content">
+				<i class="fa-regular fa-image fa-6x" ></i>
+				<label for="fileInput">+ Ajouter photo</label>
+				<input type="file"  id="fileInput">
+				<p>jpeg,png: 4mo max</p>
+			</div>
 		</div>
 		<form action="#" method="post">
-			<label for="name">Titre</label>
-			<input type="text" name="name" id="name">
+			<label for="title">Titre</label>
+			<input type="text" name="name" id="title">
 			<label for="category">Categorie</label>
 			<select type="text" name="category" id="category" >
 				<option value=""></option>
-				<option value="objets">Objets</option>
-				<option value="appartement">Appartements</option>
-				<option value="hotels-et-restaurants">Hôtels et restaurants</option>
+				<option value="objets" id="1">Objets</option>
+				<option value="appartement" id="2">Appartements</option>
+				<option value="hotels-et-restaurants" id="3">Hôtels et restaurants</option>
 			<div class="gallery-border"></div>
 			<input type="submit" value="Valider" id="btn-done-modal">
 		</form>

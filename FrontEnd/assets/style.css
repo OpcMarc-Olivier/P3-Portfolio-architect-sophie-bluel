@@ -418,7 +418,8 @@ background-color: white;
 
 
 .photo-wrapper {
-	padding: 30px;
+	max-height: 206px;
+	padding: 15px 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -428,8 +429,16 @@ background-color: white;
 	width: 65%;
 	margin: auto;
 }
+
+.photo-wrapper-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
 .photo-wrapper img {
 	width: 50%;
+	height: auto;
 	margin: auto;
 }
 
@@ -447,7 +456,7 @@ background-color: white;
 	
 }
 #fileInput{
-	/* display: none; */
+	display: none;
  }
 .fa-image{
 	color: #B9C5CC;
@@ -473,7 +482,7 @@ background-color: white;
 	object-fit: cover;
 }
 
-#trash-icon{
+.trash-icon{
 	
 	padding: 3px 4px;
 	border-radius: 2px;
