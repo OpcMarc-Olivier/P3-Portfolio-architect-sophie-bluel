@@ -36,7 +36,6 @@ galleryGrid.innerHTML= ""
 //Creation des balises via l'API
 getWorks()
 editionMode()
-// modal()
 appJs()
 }
 
