@@ -51,6 +51,7 @@ async function postLogin (){
   
     const titlePassword = document.querySelector(".mdp")
     if (reponse.status===200) {
+        alert("Vous êtes connecté.")
         window.location.href ="index.html"
         titlePassword.innerHTML = ""
         titlePassword.innerHTML = "Vous êtes connecté!"

@@ -7,7 +7,6 @@
         editMode.classList.add("edit-mode")
 
         const logOut = document.getElementById("logout")
-        console.log(logOut);
         logOut.innerHTML = ""
         logOut.innerHTML = "logout"
 
@@ -17,7 +16,6 @@
         const btnModifier = document.querySelector("#portfolio h2")
         btnModifier.appendChild(divModifier)
         const modalLink = document.querySelector("#portfolio h2 a")
-        console.log(modalLink);
         modalLink.classList.add("js-modal")
         modalLink.setAttribute("href","#modal-body")
         modalLink.setAttribute("id","modal-link" )
@@ -34,8 +32,8 @@
             window.localStorage.removeItem("token")
             const token = window.localStorage.getItem("token")
             console.log(token);
+            alert("Vous êtes déconnecté.")
             window.location.href="index.html"
-            console.log("je me suis déconnecté");
         })
 
 

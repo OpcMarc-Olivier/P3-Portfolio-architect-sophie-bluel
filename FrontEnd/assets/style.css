@@ -426,8 +426,9 @@ background-color: white;
 	gap: 20px;
 	background-color: #E8F1F6;
 	border-radius: 10px;
-	width: 65%;
+	width: 87%;
 	margin: auto;
+	margin-bottom: 20px;
 }
 
 .photo-wrapper-content {
@@ -437,9 +438,9 @@ background-color: white;
 	gap: 20px;
 }
 .photo-wrapper img {
-	width: 50%;
-	height: auto;
-	margin: auto;
+	
+	width: 40%
+
 }
 
 .photo-wrapper label {
@@ -501,7 +502,7 @@ background-color: white;
 	width: 75%;
 	border-top: 1px solid #B3B3B3;
 }
-#btn-add-modal,#btn-done-modal {
+#btn-add-modal, #btn-done-modal {
 	height: 50px;
 	width: 297px;
 	font-size: 1.2em;
@@ -509,8 +510,20 @@ background-color: white;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
+ .true {
+	background-color: #1d6154;
+}
+
 #btn-done-modal {
 	background-color: #A7A7A7;
+}
+#btn-done-modal-true {
+	background-color: #1d6154;
+	height: 50px;
+	width: 297px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 #btn-add-modal:hover{
