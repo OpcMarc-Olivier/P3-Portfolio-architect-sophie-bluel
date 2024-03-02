@@ -9,6 +9,7 @@ export function appJs () {
     const focusableSelector = "input,a,button,textarea"
     let focusables = []
     let prevouislyFocusElement = null
+    let fileInput = document.querySelector("#fileInput")
     
     const openModal = function(e) {
         e.preventDefault()
@@ -98,7 +99,6 @@ export function appJs () {
         if (modal=== null) return
         if (prevouislyFocusElement !== null) prevouislyFocusElement.focus()
         e.preventDefault ()
-        // modal.setAttribute("style","display: none;")
         modal.style.display = 'none';
         modal.setAttribute ("aria-hidden", "true")
         modal.removeAttribute ("aria-modal")
@@ -122,6 +122,8 @@ export function appJs () {
         const formModal2 = document.querySelector("#add-work")
         formModal2.reset()
         
+        console.log(fileInput.files);
+        
     
     }
 
@@ -141,6 +143,7 @@ export function appJs () {
         modal2.querySelector("#exit-cross-modal2").removeEventListener("click", closeModal)
         modal2.querySelector(".js-modal2-stop").removeEventListener("click", stopPropagation)
         modal2 = null
+        fileInput.removeEventListener("change",loadPicture)
 
         
     }
@@ -154,8 +157,40 @@ export function appJs () {
         console.log(focusables);
     }
 
+    function loadPicture () {
+
+        console.log(this.files);
+        
+        if (this.files.length === 0) {
+            console.log("Vous n'avez sélectionné aucun fichier");
+            return
+        }
+        const file = this.files[0]
+        const fileReader = new FileReader ()
+        fileReader.readAsDataURL (file)
+        fileReader.addEventListener('load', (e)=>{
+            console.log(previewLoaded);
+            if (previewLoaded===true) {
+                const imgPhotoWrapper = document.querySelectorAll(".photo-wrapper img")
+                for (let i=0; i<imgPhotoWrapper.length;i++){
+                    imgPhotoWrapper[i].remove()
+                }
+            }
+            const photoPreview = document.querySelector(".photo-wrapper")
+        const photoPreviewEmpty = document.querySelector(".photo-wrapper-content")
+        photoPreviewEmpty.style.display = 'none'
+        const img = document.createElement("img")
+        img.src = e.target.result
+        photoPreview.appendChild(img)
+        previewLoaded = true
+        console.log(previewLoaded);
+        })
+    }
+
     const openModal2 = function (e) {
         e.preventDefault()
+       const monInput = document.querySelector("#fileInput")
+       console.log(monInput.files);
       
         console.log("j'ai cliqué sur le bouton qui ouvre la modal2");
         modal2 = document.querySelector("#modal-body2")
@@ -182,34 +217,7 @@ export function appJs () {
         })
 
         // PREVIEW FILE
-
-        function loadPicture () {
-            console.log(this.files[0].name);
-            if (this.files.length === 0) {
-                console.log("Vous n'avez sélectionné aucun fichier");
-                return
-            }
-            const file = this.files[0]
-            const fileReader = new FileReader ()
-            fileReader.readAsDataURL (file)
-            fileReader.addEventListener('load', (e)=>{
-                console.log(previewLoaded);
-                if (previewLoaded===true) {
-                    const imgPhotoWrapper = document.querySelectorAll(".photo-wrapper img")
-                    for (let i=0; i<imgPhotoWrapper.length;i++){
-                        imgPhotoWrapper[i].remove()
-                    }
-                }
-                const photoPreview = document.querySelector(".photo-wrapper")
-            const photoPreviewEmpty = document.querySelector(".photo-wrapper-content")
-            photoPreviewEmpty.style.display = 'none'
-            const img = document.createElement("img")
-            img.src = e.target.result
-            photoPreview.appendChild(img)
-            previewLoaded = true
-            console.log(previewLoaded);
-            })
-        }
+      
 
         const fileInput = document.querySelector("#fileInput")
         fileInput.addEventListener("change", loadPicture)
@@ -280,7 +288,7 @@ export function appJs () {
                 headers: {'Authorization': 'Bearer '+ token},
                 body : formData
             })
-
+            console.log(reponse.status);
             if( reponse.status === 401) {
                 alert("Echec de l'ajout du projet")
                 console.log(reponse);}
@@ -289,6 +297,7 @@ export function appJs () {
                 closeModal2 (e)
                 const galleryGrid = document.querySelector(".gallery")
                 galleryGrid.innerHTML= ""
+                alert("J'actualise la galerie sans rechagement de la page")
                 getWorks()
             }
 
