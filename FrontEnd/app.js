@@ -10,6 +10,7 @@ export function appJs () {
     let focusables = []
     let prevouislyFocusElement = null
     let fileInput = document.querySelector("#fileInput")
+    const formAddWork = document.querySelector("#add-work")
     
     const openModal = function(e) {
         e.preventDefault()
@@ -132,7 +133,7 @@ export function appJs () {
         if (prevouislyFocusElement !== null) prevouislyFocusElement.focus()
         e.preventDefault ()
         
-        resetPicturePreview (e)
+        
 
         
 
@@ -145,7 +146,8 @@ export function appJs () {
         modal2 = null
         fileInput.removeEventListener("change",loadPicture)
 
-        
+        resetPicturePreview (e)
+        formAddWork.removeEventListener("submit",addWorks)
     }
 
     const stopPropagation = function (e){
@@ -215,6 +217,7 @@ export function appJs () {
             closeModal2(e)
             openModal(e)
         })
+        
 
         // PREVIEW FILE
       
@@ -248,67 +251,119 @@ export function appJs () {
             }
         }
         
+        // ADDWORK 
+
+        formAddWork.addEventListener("submit", addWorks)
         
         
         
         // ADDWORK
 
-        const formAddWork = document.querySelector("#add-work")
-        formAddWork.addEventListener ("submit", async function (e) {
-            e.preventDefault()
+        // const formAddWork = document.querySelector("#add-work")
+        // formAddWork.addEventListener ("submit", async function (e) {
+        //     e.preventDefault()
 
-            function getCategoryFile () {
-                const category = document.querySelectorAll("#category option")
-                for (let i=0 ; i< category.length; i++) {
-                    if (category[i].selected) {
+        //     function getCategoryFile () {
+        //         const category = document.querySelectorAll("#category option")
+        //         for (let i=0 ; i< category.length; i++) {
+        //             if (category[i].selected) {
 
-                        const categorySelected = category [i].id
-                        return categorySelected
-                    }
-                }
-            }
+        //                 const categorySelected = category [i].id
+        //                 return categorySelected
+        //             }
+        //         }
+        //     }
 
-            const newWorkPicture = document.getElementById("fileInput").files[0]
-            const newWorksTitle = document.querySelector("#title").value
-            const newWorkCategory = getCategoryFile ()
+        //     const newWorkPicture = document.getElementById("fileInput").files[0]
+        //     const newWorksTitle = document.querySelector("#title").value
+        //     const newWorkCategory = getCategoryFile ()
             
             
 
-            const formData = new FormData
-            formData.append ("image", newWorkPicture )
-            formData.append ("title", newWorksTitle)
-            formData.append ("category", newWorkCategory)
+        //     const formData = new FormData
+        //     formData.append ("image", newWorkPicture )
+        //     formData.append ("title", newWorksTitle)
+        //     formData.append ("category", newWorkCategory)
 
 
-            const token =  JSON.parse(window.localStorage.getItem("token"))
-            console.log(token);
+        //     const token =  JSON.parse(window.localStorage.getItem("token"))
+        //     console.log(token);
 
-            const reponse = await fetch ("http://localhost:5678/api/works",{
-                method : "POST",
-                headers: {'Authorization': 'Bearer '+ token},
-                body : formData
-            })
-            console.log(reponse.status);
-            if( reponse.status === 401) {
-                alert("Echec de l'ajout du projet")
-                console.log(reponse);}
-            else {
-                alert("Nouveau projet ajouté!")
-                closeModal2 (e)
-                const galleryGrid = document.querySelector(".gallery")
-                galleryGrid.innerHTML= ""
-                alert("J'actualise la galerie sans rechagement de la page")
-                getWorks()
-            }
+        //     const reponse = await fetch ("http://localhost:5678/api/works",{
+        //         method : "POST",
+        //         headers: {'Authorization': 'Bearer '+ token},
+        //         body : formData
+        //     })
+        //     console.log(reponse.status);
+        //     if( reponse.status === 401) {
+        //         alert("Echec de l'ajout du projet")
+        //         console.log(reponse);}
+        //     else {
+        //         closeModal2 (e)
+        //         const galleryGrid = document.querySelector(".gallery")
+        //         galleryGrid.innerHTML= ""
+        //         alert("Nouveau projet ajouté!")
+               
+        //         getWorks()
+        //     }
 
-        })
+        // })
 
 
     }
 
     
 
+// ADDWORK 2
 
+async function addWorks(e) {
+
+        e.preventDefault()
+        function getCategoryFile () {
+            const category = document.querySelectorAll("#category option")
+            for (let i=0 ; i< category.length; i++) {
+                if (category[i].selected) {
+
+                    const categorySelected = category [i].id
+                    return categorySelected
+                }
+            }
+        }
+
+        const newWorkPicture = document.getElementById("fileInput").files[0]
+        const newWorksTitle = document.querySelector("#title").value
+        const newWorkCategory = getCategoryFile ()
+        
+        
+
+        const formData = new FormData
+        formData.append ("image", newWorkPicture )
+        formData.append ("title", newWorksTitle)
+        formData.append ("category", newWorkCategory)
+
+
+        const token =  JSON.parse(window.localStorage.getItem("token"))
+        console.log(token);
+
+        const reponse = await fetch ("http://localhost:5678/api/works",{
+            method : "POST",
+            headers: {'Authorization': 'Bearer '+ token},
+            body : formData
+        })
+        console.log(reponse.status);
+        if (reponse.status === 201) {
+            closeModal2(e)
+            const galleryGrid = document.querySelector(".gallery")
+            galleryGrid.innerHTML= ""
+            alert("Nouveau projet ajouté")
+            getWorks(e)
+            
+
+        }else{
+            alert("Echec de l'ajout du projet")
+
+        }
+}
     
 
 document.querySelectorAll(".js-modal").forEach(a =>{

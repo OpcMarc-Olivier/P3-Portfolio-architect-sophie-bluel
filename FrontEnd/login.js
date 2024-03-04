@@ -18,9 +18,8 @@
 
 async function postLogin (){
 
-    const btnEnvoyer = document.querySelector("#btn-envoyer")
-    console.log(btnEnvoyer);
-    btnEnvoyer.addEventListener ("click",async function(event){
+    const loginForm = document.querySelector("#login-form")
+    loginForm.addEventListener ("submit",async function(event){
             event.preventDefault()
             const emailLogin = document.getElementById("email")
             const email = emailLogin.value
